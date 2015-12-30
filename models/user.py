@@ -38,7 +38,7 @@ class User(object):
 
     @sex.setter
     def sex(self, value):
-        if value:
+        if value in xrange(2):
             self._sex = value
         else:
             raise ValueError("You did not provide valid sex")
@@ -49,7 +49,7 @@ class User(object):
 
     @major.setter
     def major(self, value):
-        if value:
+        if value in xrange(999):
             self._major = value
         else:
             raise ValueError("You did not provide valid major")
@@ -60,7 +60,7 @@ class User(object):
 
     @grade.setter
     def grade(self, value):
-        if value:
+        if value in xrange(4):
             self._grade = value
         else:
             raise ValueError("You did not provide valid grade")
@@ -81,7 +81,7 @@ class User(object):
             # else:
             #     raise ValueError("You did not provide valid avatar")
 
-    def __init__(self, name, pwd, sex, major, grade, avatar, **kwargs):
+    def __init__(self, name, pwd, sex, major, grade, avatar=None, **kwargs):
         super(User, self).__init__()
         self._name = None
         self._pwd = None
