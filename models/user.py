@@ -3,6 +3,7 @@ import base64
 import os
 import re
 from datetime import datetime
+from consts import *
 
 from db import get_db
 
@@ -89,7 +90,7 @@ class User(object):
             path = os.path.join(IMG_DIR, str(self.name) + "_avatar" + now + ".jpg")
             avatar_file = open(path, 'wb')
             avatar_file.write(value)
-            self._avatar_url = '/static/' + '/'.join(path.split('/')[-3:])
+            self._avatar_url = SERVER_ROOT_URL + '/static/' + '/'.join(path.split('/')[-3:])
             avatar_file.close()
         # else:
         #     raise ValueError("You did not provide valid avatar")
@@ -101,7 +102,7 @@ class User(object):
         self._sex = None
         self._major = None
         self._grade = None
-        self._avatar_url = "/static/img/user/default_avatar.jpg"
+        self._avatar_url = SERVER_ROOT_URL + "/static/img/user/default_avatar.jpg"
         self._new_psw = None
         self.name = name
         self.pwd = pwd
