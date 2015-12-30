@@ -90,8 +90,8 @@ class User(object):
             avatar_file.write(value)
             self._avatar_url = '/static/' + '/'.join(path.split('/')[-3:])
             avatar_file.close()
-            # else:
-            #     raise ValueError("You did not provide valid avatar")
+        # else:
+        #     raise ValueError("You did not provide valid avatar")
 
     def __init__(self, name, pwd, sex, major, grade, avatar=None, **kwargs):
         super(User, self).__init__()
@@ -100,9 +100,8 @@ class User(object):
         self._sex = None
         self._major = None
         self._grade = None
-        self._avatar_url = None
+        self._avatar_url = "/static/img/user/default_avatar.jpg"
         self._new_psw = None
-        self._avatar_file = "default_avatar.jpg"
         self.name = name
         self.pwd = pwd
         self.sex = sex
