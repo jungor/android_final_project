@@ -80,7 +80,6 @@ class UserUpdateHandler(BaseHandler):
             "sex": self.get_argument("sex", None),
             "major": self.get_argument("major", None),
             "grade": self.get_argument("grade", None),
-            "avatar":  self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
         }
         # if not User.authenticate(user_kw["old_name"], user_kw["old_pwd"]):
         #     self.write(self.make_result(0, "user authenticate failed", None))
@@ -97,10 +96,30 @@ class UserUpdateHandler(BaseHandler):
                     user.major = user_kw["major"]
                 if user_kw["grade"]:
                     user.grade = user_kw["grade"]
+                user.save()
+                self.write(self.make_result(1, "user update OK", None))
+            else:
+                self.write(self.make_result(0, "user not found or wrong password", None))
+        except ValueError, e:
+            self.write(self.make_result(0, str(e), None))
+        except IOError, e:
+            self.write(self.make_result(0, str(e), None))
+
+
+class UserUploadHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        user_kw = {
+            "old_name": self.get_argument("old_name", None),
+            "old_pwd": self.get_argument("old_pwd", None),
+            "avatar":  self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
+        }
+        try:
+            user = User.get(user_kw["old_name"], user_kw["old_pwd"])
+            if user:
                 if user_kw["avatar"]:
                     user.avatar_url = user_kw["avatar"]
                 user.save()
-                self.write(self.make_result(1, "user update OK", None))
+                self.write(self.make_result(1, "user upload OK", None))
             else:
                 self.write(self.make_result(0, "user not found or wrong password", None))
         except ValueError, e:
@@ -114,6 +133,7 @@ class UserResetHandler(BaseHandler):
         User.reset()
         self.write(self.make_result(1, "user reset OK", None))
 
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -122,6 +142,7 @@ if __name__ == "__main__":
                 (r'/login', LoginHandler),
                 (r'/register', RegisterHandler),
                 (r'/user/update', UserUpdateHandler),
+                (r'/user/upload', UserUploadHandler),
                 (r'/user/reset', UserResetHandler),
             ],
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
