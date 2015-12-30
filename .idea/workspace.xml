@@ -491,7 +491,25 @@
       <option name="project" value="LOCAL" />
       <updated>1451447049331</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add user register params validation">
+      <created>1451447063406</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1451447063406</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add user register params validation">
+      <created>1451447083828</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1451447083828</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add user register params validation">
+      <created>1451447094691</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1451447094691</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
