@@ -119,7 +119,7 @@ class UserUploadHandler(BaseHandler):
                 if user_kw["avatar"]:
                     user.avatar_url = user_kw["avatar"]
                 user.save()
-                self.write(self.make_result(1, "user upload OK", {"avatar_rul": user.avatar_url}))
+                self.write(self.make_result(1, "user upload OK", {"avatar_url": user.avatar_url}))
             else:
                 self.write(self.make_result(0, "user not found or wrong password", None))
         except ValueError, e:
