@@ -6,7 +6,7 @@ from datetime import datetime
 
 from db import get_db
 
-IMG_DIR = os.path.join(os.path.dirname(__file__), os.pardir, "static", "img")
+IMG_DIR = os.path.join(os.path.dirname(__file__), os.pardir, "static", "img", "user")
 
 
 class User(object):
@@ -76,12 +76,12 @@ class User(object):
             path = os.path.join(IMG_DIR, str(self.name) + "_avatar" + now + ".jpg")
             avatar_file = open(path, 'w')
             avatar_file.write(value)
-            self._avatar_url = '/' + '/'.join(path.split('/')[-3:])
+            self._avatar_url = '/static/' + '/'.join(path.split('/')[-3:])
             avatar_file.close()
             # else:
             #     raise ValueError("You did not provide valid avatar")
 
-    def __init__(self, name=None, pwd=None, sex=None, major=None, grade=None, avatar=None, **kwargs):
+    def __init__(self, name, pwd, sex, major, grade, avatar, **kwargs):
         super(User, self).__init__()
         self._name = None
         self._pwd = None
@@ -134,7 +134,7 @@ class User(object):
             return None
 
     @classmethod
-    def get_user(cls, name, pwd):
+    def get(cls, name, pwd):
         doc = cls.authenticate(name, pwd)
         if doc:
             print doc
@@ -143,6 +143,11 @@ class User(object):
             return u
         else:
             return None
+
+    @classmethod
+    def reset(cls):
+        db = get_db()
+        db["Users"].remove({})
 
 
 if __name__ == "__main__":

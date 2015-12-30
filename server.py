@@ -87,23 +87,32 @@ class UserUpdateHandler(BaseHandler):
         #     return
         print user_kw
         try:
-            user = User.get_user(user_kw["old_name"], user_kw["old_pwd"])
-            if user_kw["pwd"]:
-                user.pwd = user_kw["pwd"]
-            if user_kw["sex"]:
-                user.sex = user_kw["sex"]
-            if user_kw["major"]:
-                user.major = user_kw["major"]
-            if user_kw["grade"]:
-                user.grade = user_kw["grade"]
-            if user_kw["avatar"]:
-                user.avatar_url = user_kw["avatar"]
-            user.save()
-            self.write(self.make_result(1, "user update OK", None))
+            user = User.get(user_kw["old_name"], user_kw["old_pwd"])
+            if user:
+                if user_kw["pwd"]:
+                    user.pwd = user_kw["pwd"]
+                if user_kw["sex"]:
+                    user.sex = user_kw["sex"]
+                if user_kw["major"]:
+                    user.major = user_kw["major"]
+                if user_kw["grade"]:
+                    user.grade = user_kw["grade"]
+                if user_kw["avatar"]:
+                    user.avatar_url = user_kw["avatar"]
+                user.save()
+                self.write(self.make_result(1, "user update OK", None))
+            else:
+                self.write(self.make_result(0, "user not found or wrong password", None))
         except ValueError, e:
             self.write(self.make_result(0, str(e), None))
         except IOError, e:
             self.write(self.make_result(0, str(e), None))
+
+
+class UserResetHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        User.reset()
+        self.write(self.make_result(1, "user reset OK", None))
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
@@ -113,6 +122,7 @@ if __name__ == "__main__":
                 (r'/login', LoginHandler),
                 (r'/register', RegisterHandler),
                 (r'/user/update', UserUpdateHandler),
+                (r'/user/reset', UserResetHandler),
             ],
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
             static_path=os.path.join(os.path.dirname(__file__), 'static'),
