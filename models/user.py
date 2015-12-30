@@ -1,5 +1,5 @@
 # -*-coding:utf-8 -*-
-
+import base64
 import os
 import re
 from datetime import datetime
@@ -84,9 +84,10 @@ class User(object):
     @avatar_url.setter
     def avatar_url(self, value):
         if value:
+            value = base64.b64decode(value)
             now = re.sub(r'[ :.]', '-', str(datetime.now()))
             path = os.path.join(IMG_DIR, str(self.name) + "_avatar" + now + ".jpg")
-            avatar_file = open(path, 'w')
+            avatar_file = open(path, 'wb')
             avatar_file.write(value)
             self._avatar_url = '/static/' + '/'.join(path.split('/')[-3:])
             avatar_file.close()
