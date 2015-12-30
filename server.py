@@ -111,7 +111,8 @@ class UserUploadHandler(BaseHandler):
         user_kw = {
             "old_name": self.get_argument("old_name", None),
             "old_pwd": self.get_argument("old_pwd", None),
-            "avatar":  self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
+            # "avatar":  self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
+            "avatar": self.get_argument("avatar", None),
         }
         try:
             user = User.get(user_kw["old_name"], user_kw["old_pwd"])
