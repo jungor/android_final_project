@@ -81,5 +81,8 @@ docs/_build/
 # PyBuilder
 target/
 
-static/img
+static/img/
+
+!static/img/user/default_avatar.png
+!static/img/club/default_logo.png
 

@@ -87,7 +87,7 @@ class User(object):
         if value:
             value = base64.b64decode(value)
             now = re.sub(r'[ :.]', '-', str(datetime.now()))
-            path = os.path.join(IMG_DIR, str(self.name) + "_avatar" + now + ".jpg")
+            path = os.path.join(IMG_DIR, str(self.name) + "_avatar" + now + ".png")
             avatar_file = open(path, 'wb')
             avatar_file.write(value)
             self._avatar_url = SERVER_ROOT_URL + '/static/' + '/'.join(path.split('/')[-3:])
@@ -102,7 +102,7 @@ class User(object):
         self._sex = None
         self._major = None
         self._grade = None
-        self._avatar_url = SERVER_ROOT_URL + "/static/img/user/default_avatar.jpg"
+        self._avatar_url = SERVER_ROOT_URL + "/static/img/user/default_avatar.png"
         self._new_psw = None
         self.name = name
         self.pwd = pwd
