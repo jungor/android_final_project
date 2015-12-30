@@ -38,10 +38,14 @@ class User(object):
 
     @sex.setter
     def sex(self, value):
-        if value in xrange(2):
-            self._sex = value
-        else:
-            raise ValueError("You did not provide valid sex")
+        try:
+            value = int(value)
+            if value in xrange(2):
+                self._sex = value
+            else:
+                raise ValueError("You did not provide valid sex")
+        except ValueError, e:
+            raise e
 
     @property
     def major(self):
@@ -49,10 +53,14 @@ class User(object):
 
     @major.setter
     def major(self, value):
-        if value in xrange(999):
-            self._major = value
-        else:
-            raise ValueError("You did not provide valid major")
+        try:
+            value = int(value)
+            if value in xrange(999):
+                self._major = value
+            else:
+                raise ValueError("You did not provide valid major")
+        except ValueError, e:
+            raise e
 
     @property
     def grade(self):
@@ -60,10 +68,14 @@ class User(object):
 
     @grade.setter
     def grade(self, value):
-        if value in xrange(4):
-            self._grade = value
-        else:
-            raise ValueError("You did not provide valid grade")
+        try:
+            value = int(value)
+            if value in xrange(4):
+                self._grade = value
+            else:
+                raise ValueError("You did not provide valid grade")
+        except ValueError, e:
+            raise e
 
     @property
     def avatar_url(self):
