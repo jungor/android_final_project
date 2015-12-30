@@ -97,7 +97,7 @@ class UserUpdateHandler(BaseHandler):
                 if user_kw["grade"]:
                     user.grade = user_kw["grade"]
                 user.save()
-                self.write(self.make_result(1, "user update OK", None))
+                self.write(self.make_result(1, "user update OK", {"avatar_rul": user.avatar_url}))
             else:
                 self.write(self.make_result(0, "user not found or wrong password", None))
         except ValueError, e:
