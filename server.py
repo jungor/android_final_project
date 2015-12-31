@@ -58,7 +58,7 @@ class RegisterHandler(BaseHandler):
             "grade": self.get_argument("grade", None),
             "avatar": self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
         }
-        if User.is_exist(new_user_kw["name"]):
+        if User.is_name_exist(new_user_kw["name"]):
             self.write(self.make_result(0, "name already exists", None))
             return
         try:
@@ -74,19 +74,15 @@ class RegisterHandler(BaseHandler):
 class UserUpdateHandler(BaseHandler):
     def post(self, *args, **kwargs):
         user_kw = {
-            "old_name": self.get_argument("old_name", None),
-            "old_pwd": self.get_argument("old_pwd", None),
+            "uid": self.get_argument("uid", None),
             "pwd": self.get_argument("pwd", None),
             "sex": self.get_argument("sex", None),
             "major": self.get_argument("major", None),
             "grade": self.get_argument("grade", None),
         }
-        # if not User.authenticate(user_kw["old_name"], user_kw["old_pwd"]):
-        #     self.write(self.make_result(0, "user authenticate failed", None))
-        #     return
         print user_kw
         try:
-            user = User.get(user_kw["old_name"], user_kw["old_pwd"])
+            user = User.get(user_kw["uid"])
             if user:
                 if user_kw["pwd"]:
                     user.pwd = user_kw["pwd"]
@@ -109,13 +105,11 @@ class UserUpdateHandler(BaseHandler):
 class UserUploadHandler(BaseHandler):
     def post(self, *args, **kwargs):
         user_kw = {
-            "old_name": self.get_argument("old_name", None),
-            "old_pwd": self.get_argument("old_pwd", None),
-            # "avatar":  self.request.files["avatar"][0]["body"] if "avatar" in self.request.files else None,
+            "uid": self.get_argument("uid", None),
             "avatar": self.get_argument("avatar", None),
         }
         try:
-            user = User.get(user_kw["old_name"], user_kw["old_pwd"])
+            user = User.get(user_kw["uid"])
             if user:
                 if user_kw["avatar"]:
                     user.avatar_url = user_kw["avatar"]
@@ -140,11 +134,11 @@ if __name__ == "__main__":
     APP = tornado.web.Application(
             handlers=[
                 (r'/', IndexHandler),
-                (r'/login', LoginHandler),
-                (r'/register', RegisterHandler),
-                (r'/user/update', UserUpdateHandler),
-                (r'/user/upload', UserUploadHandler),
-                (r'/user/reset', UserResetHandler),
+                (r'/api/login', LoginHandler),
+                (r'/api/register', RegisterHandler),
+                (r'/api/user/update', UserUpdateHandler),
+                (r'/api/user/upload', UserUploadHandler),
+                (r'/api/user/reset', UserResetHandler),
             ],
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
             static_path=os.path.join(os.path.dirname(__file__), 'static'),
