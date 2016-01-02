@@ -21,6 +21,18 @@ class Activity(object):
         return list(cursor)
 
     @classmethod
+    def get_all_acts_by_type(cls, t):
+        db = get_db()
+        cursor = db["Activities"].find({"type": t})
+        return  list(cursor)
+
+    # @classmethod
+    # def get_recent_acts_by_club(cls, cname, ):
+    #     db = get_db()
+    #     cursor = db["Activities"].find({"organizer": cname})
+    #     return list(cursor)
+
+    @classmethod
     def reset(cls):
         db = get_db()
         db["Activities"].remove({})
@@ -28,8 +40,60 @@ class Activity(object):
                 {
                     "title": "校园跑",
                     "read_nums": "0",
-                    "start_date": "2015-11-11 19:00",
-                    "end_date": "2015-11-11 22:00",
+                    "start_date": "2015-10-11 19:00",
+                    "end_date": "2015-10-11 22:00",
+                    "sponsor": "红牛",
+                    "organizer": "一起跑",
+                    "img_url": SERVER_ROOT_URL + "/static/img/activity/0.jpg",
+                    "detail_url": SERVER_ROOT_URL + "/static/img/activity/0",
+                    "type": "0",
+                }
+        )
+        db["Activities"].insert(
+                {
+                    "title": "校园跑",
+                    "read_nums": "0",
+                    "start_date": "2015-09-11 19:00",
+                    "end_date": "2015-09-11 22:00",
+                    "sponsor": "红牛",
+                    "organizer": "一起跑",
+                    "img_url": SERVER_ROOT_URL + "/static/img/activity/0.jpg",
+                    "detail_url": SERVER_ROOT_URL + "/static/img/activity/0",
+                    "type": "0",
+                }
+        )
+        db["Activities"].insert(
+                {
+                    "title": "校园跑",
+                    "read_nums": "0",
+                    "start_date": "2015-08-11 19:00",
+                    "end_date": "2015-08-11 22:00",
+                    "sponsor": "红牛",
+                    "organizer": "一起跑",
+                    "img_url": SERVER_ROOT_URL + "/static/img/activity/0.jpg",
+                    "detail_url": SERVER_ROOT_URL + "/static/img/activity/0",
+                    "type": "0",
+                }
+        )
+        db["Activities"].insert(
+                {
+                    "title": "校园跑",
+                    "read_nums": "0",
+                    "start_date": "2015-07-11 19:00",
+                    "end_date": "2015-07-11 22:00",
+                    "sponsor": "红牛",
+                    "organizer": "一起跑",
+                    "img_url": SERVER_ROOT_URL + "/static/img/activity/0.jpg",
+                    "detail_url": SERVER_ROOT_URL + "/static/img/activity/0",
+                    "type": "0",
+                }
+        )
+        db["Activities"].insert(
+                {
+                    "title": "校园跑",
+                    "read_nums": "0",
+                    "start_date": "2015-06-11 19:00",
+                    "end_date": "2015-06-11 22:00",
                     "sponsor": "红牛",
                     "organizer": "一起跑",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/0.jpg",

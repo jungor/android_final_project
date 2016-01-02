@@ -161,6 +161,13 @@ class ActivityResetHandler(BaseHandler):
         self.write(self.make_result(1, "activity reset OK", None))
 
 
+class ActivityIndexByTypeHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        t = self.get_argument("type", None)
+        result = Activity.get_all_acts_by_club(t)
+        self.write(self.make_result(1, "get acts by club OK", result))
+
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -175,6 +182,7 @@ if __name__ == "__main__":
                 (r'/api/club/index', ClubIndexHandler),
                 (r'/api/club/detail', ClubDetailHandler),
                 (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
+                (r'/api/activity/get_all_acts_by_type', ActivityIndexByTypeHandler),
                 (r'/api/activity/reset', ActivityResetHandler),
 
             ],
