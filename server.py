@@ -174,7 +174,7 @@ if __name__ == "__main__":
                 (r'/api/club/reset', ClubResetHandler),
                 (r'/api/club/index', ClubIndexHandler),
                 (r'/api/club/detail', ClubDetailHandler),
-                (r'/api/activity/get_all_acts_by_clubs', ActivityIndexByClubHandler),
+                (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
                 (r'/api/activity/reset', ActivityResetHandler),
 
             ],
