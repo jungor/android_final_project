@@ -4,6 +4,7 @@ import os
 import re
 from datetime import datetime
 
+import pymongo
 from bson.objectid import ObjectId
 
 from consts import *
@@ -17,14 +18,14 @@ class Activity(object):
     @classmethod
     def get_all_acts_by_club(cls, cname):
         db = get_db()
-        cursor = db["Activities"].find({"organizer": cname})
+        cursor = db["Activities"].find({"organizer": cname}).sort("start_date", pymongo.DESCENDING).limit(50)
         return list(cursor)
 
     @classmethod
     def get_all_acts_by_type(cls, t):
         db = get_db()
-        cursor = db["Activities"].find({"type": t})
-        return  list(cursor)
+        cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(50)
+        return list(cursor)
 
     # @classmethod
     # def get_recent_acts_by_club(cls, cname, ):
