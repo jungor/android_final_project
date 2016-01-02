@@ -88,3 +88,4 @@ static/img/user/*
 !static/img/club/
 static/img/club/*
 !static/img/club/default_logo.png
+!static/img/activity/

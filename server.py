@@ -9,7 +9,9 @@ import tornado.web
 from bson.json_util import dumps
 from tornado.options import define, options
 
+from models.activity import Activity
 from models.user import User
+from models.club import Club
 
 define("port", default=8000, help="run on the given port", type=int)
 
@@ -129,6 +131,36 @@ class UserResetHandler(BaseHandler):
         self.write(self.make_result(1, "user reset OK", None))
 
 
+class ClubResetHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        Club.reset()
+        self.write(self.make_result(1, "club reset OK", None))
+
+
+class ClubIndexHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        all_clubs = Club.get_all_clubs()
+        self.write(self.make_result(1, "get all clubs OK", all_clubs))
+
+
+class ClubDetailHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        pass
+
+
+class ActivityIndexByClubHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        cname = self.get_argument("cname", None)
+        result = Activity.get_all_acts_by_club(cname)
+        self.write(self.make_result(1, "get acts by club OK", result))
+
+
+class ActivityResetHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        Activity.reset()
+        self.write(self.make_result(1, "activity reset OK", None))
+
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -139,6 +171,12 @@ if __name__ == "__main__":
                 (r'/api/user/update', UserUpdateHandler),
                 (r'/api/user/upload', UserUploadHandler),
                 (r'/api/user/reset', UserResetHandler),
+                (r'/api/club/reset', ClubResetHandler),
+                (r'/api/club/index', ClubIndexHandler),
+                (r'/api/club/detail', ClubDetailHandler),
+                (r'/api/activity/get_all_acts_by_clubs', ActivityIndexByClubHandler),
+                (r'/api/activity/reset', ActivityResetHandler),
+
             ],
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
             static_path=os.path.join(os.path.dirname(__file__), 'static'),

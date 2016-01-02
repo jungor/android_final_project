@@ -143,13 +143,74 @@ class Club(object):
         if cursor.count() == 0:
             db["Clubs"].insert(
                     {
-                        "name": "guangbotai",
-                        "chinese_name": "广播台",
+                        "name": "一起跑",
+                        "pinyin": "yiqipao",
                         "slogan": "赶紧参加维纳斯歌手大赛吧",
-                        "intro": "大家好我叫广播台",
+                        "intro": "大家好我叫一起跑",
                         "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
-                        "all_act": [],
-                        "recent_act": [],
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "软件学院团委",
+                        "pinyin": "ruanjianxueyuantuanwei",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫软件学院团委",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "软件学院学生会",
+                        "pinyin": "ruanjianxueyuanxueshenghui",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫软件学院学生会",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "旅游协会",
+                        "pinyin": "lvyouxiehui",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫旅游协会",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "科幻协会",
+                        "pinyin": "kehuanxiehui",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "科幻协会",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "IBM俱乐部",
+                        "pinyin": "IBMjulebu",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫IBM俱乐部",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "心理学社",
+                        "pinyin": "xinlixueshe",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫心理学社",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                    }
+            )
+            db["Clubs"].insert(
+                    {
+                        "name": "摄影协会",
+                        "pinyin": "sheyingxiehui",
+                        "slogan": "赶紧参加维纳斯歌手大赛吧",
+                        "intro": "大家好我叫摄影协会",
+                        "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
                     }
             )
 
