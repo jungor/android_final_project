@@ -164,7 +164,7 @@ class ActivityResetHandler(BaseHandler):
 class ActivityIndexByTypeHandler(BaseHandler):
     def post(self, *args, **kwargs):
         t = self.get_argument("type", None)
-        result = Activity.get_all_acts_by_club(t)
+        result = Activity.get_all_acts_by_type(t)
         self.write(self.make_result(1, "get acts by club OK", result))
 
 
