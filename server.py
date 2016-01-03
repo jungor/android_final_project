@@ -209,6 +209,12 @@ class ActivityHtmlHandler(BaseHandler):
         self.write(aid)
 
 
+class ActivityIndexByRecommendHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        result = Activity.get_recommend_acts()
+        self.write(self.make_result(1, "get recommend acts OK", result))
+
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -226,6 +232,7 @@ if __name__ == "__main__":
                 (r'/api/club/reset', ClubResetHandler),
                 (r'/api/club/index', ClubIndexHandler),
                 (r'/api/club/detail', ClubDetailHandler),
+                (r'/api/activity/get_recommend_acts', ActivityIndexByRecommendHandler),
                 (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
                 (r'/api/activity/get_some_acts_by_type', ActivityIndexByTypeHandler),
                 (r'/api/activity/get_more_acts_by_type', ActivityIndexByTypeHandler),

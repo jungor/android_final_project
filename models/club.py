@@ -212,6 +212,24 @@ class Club(object):
                     "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
                 }
         )
+        db["Clubs"].insert(
+                {
+                    "name": "电子竞技协会",
+                    "pinyin": "dianzijingjixiehui",
+                    "slogan": "赶紧参加维纳斯歌手大赛吧",
+                    "intro": "大家好我叫电子竞技协会",
+                    "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                }
+        )
+        db["Clubs"].insert(
+                {
+                    "name": "广播台",
+                    "pinyin": "guangbotai",
+                    "slogan": "赶紧参加维纳斯歌手大赛吧",
+                    "intro": "大家好我叫广播台",
+                    "img_url": SERVER_ROOT_URL + "/static/img/club/default_logo.png",
+                }
+        )
 
 if __name__ == "__main__":
     pass
