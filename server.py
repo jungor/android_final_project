@@ -215,6 +215,19 @@ class ActivityIndexByRecommendHandler(BaseHandler):
         self.write(self.make_result(1, "get recommend acts OK", result))
 
 
+class ActivityIndexByUserLikeHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        result = Activity.get_user_like_acts(uid)
+        self.write(self.make_result(1, "get user like acts OK", result))
+
+
+class ActivityIndexByUserCollectHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        result = Activity.get_user_collect_acts(uid)
+        self.write(self.make_result(1, "get user collect acts OK", result))
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -233,6 +246,8 @@ if __name__ == "__main__":
                 (r'/api/club/index', ClubIndexHandler),
                 (r'/api/club/detail', ClubDetailHandler),
                 (r'/api/activity/get_recommend_acts', ActivityIndexByRecommendHandler),
+                (r'/api/activity/get_user_like_acts', ActivityIndexByUserLikeHandler),
+                (r'/api/activity/get_user_collect_acts', ActivityIndexByUserCollectHandler),
                 (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
                 (r'/api/activity/get_some_acts_by_type', ActivityIndexByTypeHandler),
                 (r'/api/activity/get_more_acts_by_type', ActivityIndexByTypeHandler),

@@ -10,11 +10,28 @@ from bson.objectid import ObjectId
 from consts import *
 
 from db import get_db
+from models.user import User
 
 IMG_DIR = os.path.join(os.path.dirname(__file__), os.pardir, "static", "img", "activity")
 
 
 class Activity(object):
+    @classmethod
+    def get_user_like_acts(cls, uid):
+        db = get_db()
+        u = db["Users"].find_one({"_id": ObjectId(uid)})
+        l = u["like"]
+        cursor = db["Activities"].find({"id": {"$in": l}}).sort("start_date", pymongo.ASCENDING)
+        return list(cursor)
+
+    @classmethod
+    def get_user_collect_acts(cls, uid):
+        db = get_db()
+        u = db["User"].find_one({"_id": ObjectId(uid)})
+        l = u["collect"]
+        cursor = db["Activities"].find({"id": {"$in": l}}).sort("start_date", pymongo.ASCENDING)
+        return list(cursor)
+
     @classmethod
     def get_recommend_acts(cls):
         db = get_db()
