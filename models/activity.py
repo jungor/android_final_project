@@ -56,6 +56,12 @@ class Activity(object):
         cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(1).skip(s)
         return list(cursor)
 
+    @classmethod
+    def get_act_by_url(cls, url):
+        db = get_db()
+        a = db["Activities"].find_one({"detail_url": url})
+        return a
+
     # @classmethod
     # def get_recent_acts_by_club(cls, cname, ):
     #     db = get_db()

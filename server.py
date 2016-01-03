@@ -228,6 +228,16 @@ class ActivityIndexByUserCollectHandler(BaseHandler):
         result = Activity.get_user_collect_acts(uid)
         self.write(self.make_result(1, "get user collect acts OK", result))
 
+
+class ActivityURLHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        url = self.get_argument("url", None)
+        a = Activity.get_act_by_url(url)
+        if a:
+            self.write(self.make_result(1, "get act by url OK", a))
+        else:
+            self.write(self.make_result(0, "url invalid", None))
+
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     APP = tornado.web.Application(
@@ -251,6 +261,7 @@ if __name__ == "__main__":
                 (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
                 (r'/api/activity/get_some_acts_by_type', ActivityIndexByTypeHandler),
                 (r'/api/activity/get_more_acts_by_type', ActivityIndexByTypeHandler),
+                (r'/api/activity/get_act_by_url', ActivityURLHandler),
                 (r'/api/activity/reset', ActivityResetHandler),
                 (r'/activity/(\d+)', ActivityHtmlHandler),
 
