@@ -151,6 +151,8 @@ class User(object):
                         "sex": self.sex,
                         "major": self.major,
                         "grade": self.grade,
+                        "like": [],
+                        "collect": [],
                         "avatar_url": self.avatar_url,
                     }
             )
@@ -186,6 +188,38 @@ class User(object):
             return u
         else:
             return None
+
+    @classmethod
+    def like(cls, uid, aid):
+        db = get_db()
+        db["Users"].update(
+                {"_id": ObjectId(uid)},
+                {"$addToSet": {"like": aid}}
+        )
+
+    @classmethod
+    def unlike(cls, uid, aid):
+        db = get_db()
+        db["Users"].update(
+                {"_id": ObjectId(uid)},
+                {"$pull": {"like": aid}}
+        )
+
+    @classmethod
+    def collect(cls, uid, aid):
+        db = get_db()
+        db["Users"].update(
+                {"_id": ObjectId(uid)},
+                {"$addToSet": {"collect": aid}}
+        )
+
+    @classmethod
+    def uncollect(cls, uid, aid):
+        db = get_db()
+        db["Users"].update(
+                {"_id": ObjectId(uid)},
+                {"$pull": {"collect": aid}}
+        )
 
     @classmethod
     def reset(cls):

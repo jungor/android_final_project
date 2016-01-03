@@ -125,6 +125,38 @@ class UserUploadHandler(BaseHandler):
             self.write(self.make_result(0, str(e), None))
 
 
+class UserLikeHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        aid = self.get_argument("aid", None)
+        User.like(uid, aid)
+        self.write(self.make_result(1, "user like OK", None))
+
+
+class UserUnlikeHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        aid = self.get_argument("aid", None)
+        User.unlike(uid, aid)
+        self.write(self.make_result(1, "user unlike OK", None))
+
+
+class UserCollectHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        aid = self.get_argument("aid", None)
+        User.collect(uid, aid)
+        self.write(self.make_result(1, "user collect OK", None))
+
+
+class UserUncollectHandler(BaseHandler):
+    def post(self, *args, **kwargs):
+        uid = self.get_argument("uid", None)
+        aid = self.get_argument("aid", None)
+        User.uncollect(uid, aid)
+        self.write(self.make_result(1, "user uncollect OK", None))
+
+
 class UserResetHandler(BaseHandler):
     def post(self, *args, **kwargs):
         User.reset()
@@ -186,6 +218,10 @@ if __name__ == "__main__":
                 (r'/api/register', RegisterHandler),
                 (r'/api/user/update', UserUpdateHandler),
                 (r'/api/user/upload', UserUploadHandler),
+                (r'/api/user/like', UserLikeHandler),
+                (r'/api/user/unlike', UserUnlikeHandler),
+                (r'/api/user/collect', UserCollectHandler),
+                (r'/api/user/uncollect', UserUncollectHandler),
                 (r'/api/user/reset', UserResetHandler),
                 (r'/api/club/reset', ClubResetHandler),
                 (r'/api/club/index', ClubIndexHandler),

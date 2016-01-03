@@ -45,7 +45,7 @@ class Activity(object):
         db["Activities"].remove({})
         db["Activities"].insert(
                 {
-                    "id": 0,
+                    "id": "0",
                     "title": "校园跑",
                     "read_nums": "0",
                     "start_date": "2015-10-11 19:00",
@@ -59,7 +59,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 8,
+                    "id": "8",
                     "title": "校园跑",
                     "read_nums": "0",
                     "start_date": "2015-09-11 19:00",
@@ -73,7 +73,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 9,
+                    "id": "9",
                     "title": "校园跑",
                     "read_nums": "0",
                     "start_date": "2015-08-11 19:00",
@@ -87,7 +87,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 10,
+                    "id": "10",
                     "title": "校园跑",
                     "read_nums": "0",
                     "start_date": "2015-07-11 19:00",
@@ -101,7 +101,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 11,
+                    "id": "11",
                     "title": "校园跑",
                     "read_nums": "0",
                     "start_date": "2015-06-11 19:00",
@@ -115,7 +115,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 1,
+                    "id": "1",
                     "title": "三下乡",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -129,7 +129,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 2,
+                    "id": "2",
                     "title": "认识毒药",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -143,7 +143,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 3,
+                    "id": "3",
                     "title": "食在广州",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -157,7 +157,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 4,
+                    "id": "4",
                     "title": "教室电影",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -171,7 +171,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 5,
+                    "id": "5",
                     "title": "3D打印前景",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -185,7 +185,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 6,
+                    "id": "6",
                     "title": "净化心灵",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
@@ -199,7 +199,7 @@ class Activity(object):
         )
         db["Activities"].insert(
                 {
-                    "id": 7,
+                    "id": "7",
                     "title": "PS讲座",
                     "read_nums": "0",
                     "start_date": "2015-11-11 19:00",
