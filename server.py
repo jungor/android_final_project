@@ -206,7 +206,11 @@ class ActivityIndexByTypeHandler(BaseHandler):
 
 class ActivityHtmlHandler(BaseHandler):
     def get(self, aid, *args, **kwargs):
-        self.write(aid)
+        a = Activity.get_act_by_id(aid)
+        if a:
+            self.render('activity.html', **a)
+        else:
+            self.write(self.make_result(0, "url invalid", None))
 
 
 class ActivityIndexByRecommendHandler(BaseHandler):
@@ -254,7 +258,7 @@ if __name__ == "__main__":
                 (r'/api/user/reset', UserResetHandler),
                 (r'/api/club/reset', ClubResetHandler),
                 (r'/api/club/index', ClubIndexHandler),
-                (r'/api/club/detail', ClubDetailHandler),
+                # (r'/api/club/detail', ClubDetailHandler),
                 (r'/api/activity/get_recommend_acts', ActivityIndexByRecommendHandler),
                 (r'/api/activity/get_user_like_acts', ActivityIndexByUserLikeHandler),
                 (r'/api/activity/get_user_collect_acts', ActivityIndexByUserCollectHandler),

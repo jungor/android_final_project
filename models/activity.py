@@ -27,7 +27,7 @@ class Activity(object):
     @classmethod
     def get_user_collect_acts(cls, uid):
         db = get_db()
-        u = db["User"].find_one({"_id": ObjectId(uid)})
+        u = db["Users"].find_one({"_id": ObjectId(uid)})
         l = u["collect"]
         cursor = db["Activities"].find({"id": {"$in": l}}).sort("start_date", pymongo.ASCENDING)
         return list(cursor)
@@ -60,6 +60,13 @@ class Activity(object):
     def get_act_by_url(cls, url):
         db = get_db()
         a = db["Activities"].find_one({"detail_url": url})
+        return a
+
+    @classmethod
+    def get_act_by_id(cls, aid):
+        print aid
+        db = get_db()
+        a = db["Activities"].find_one({"id": aid})
         return a
 
     # @classmethod

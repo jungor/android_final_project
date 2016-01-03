@@ -2,27 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="../static/css/main.css" rel="stylesheet">
-    <title>校园跑</title>
+    <link href='{{ static_url("css/main.css") }}' rel="stylesheet">
+    <title>{{ title }}</title>
 </head>
 <body>
     <div id="main">
         <div>
-            <img src="../static/img/activity/0.jpg">
-            <span>校园跑</span>
+            <img src="{{ img_url }}">
+            <span>{{ title }}</span>
         </div>
         <table>
             <tr>
                 <td>活动时间: </td>
-                <td>04-22 - 04-22</td>
+                <td>{{ start_date }} - {{ end_date }}</td>
             </tr>
             <tr>
                 <td>开放时间: </td>
-                <td>8:00 - 12:00</td>
+                <td>{{ start_time }} - {{ end_time }}</td>
             </tr>
             <tr>
                 <td>地点: </td>
-                <td>8:00 - 12:00</td>
+                <td>{{ place }}</td>
+            </tr>
+            <tr>
+                <td>活动详情: </td>
+                <td>{{ detail }}</td>
             </tr>
         </table>
     </div>
