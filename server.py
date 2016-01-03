@@ -18,7 +18,7 @@ define("port", default=8000, help="run on the given port", type=int)
 
 class BaseHandler(tornado.web.RequestHandler):
     def data_received(self, chunk):
-        super(BaseHandler, self).data_received()
+        super(BaseHandler, self).data_received(chunk)
 
     def make_result(self, code, msg, data):
         self.set_header("Content-type", "application/json")
@@ -164,8 +164,17 @@ class ActivityResetHandler(BaseHandler):
 class ActivityIndexByTypeHandler(BaseHandler):
     def post(self, *args, **kwargs):
         t = self.get_argument("type", None)
-        result = Activity.get_all_acts_by_type(t)
+        skip = self.get_argument("skip", None)
+        if skip:
+            result = Activity.get_more_acts_by_type(t, int(skip))
+        else:
+            result = Activity.get_some_acts_by_type(t)
         self.write(self.make_result(1, "get acts by club OK", result))
+
+
+class ActivityHtmlHandler(BaseHandler):
+    def get(self, aid, *args, **kwargs):
+        self.write(aid)
 
 
 if __name__ == "__main__":
@@ -182,8 +191,10 @@ if __name__ == "__main__":
                 (r'/api/club/index', ClubIndexHandler),
                 (r'/api/club/detail', ClubDetailHandler),
                 (r'/api/activity/get_all_acts_by_club', ActivityIndexByClubHandler),
-                (r'/api/activity/get_all_acts_by_type', ActivityIndexByTypeHandler),
+                (r'/api/activity/get_some_acts_by_type', ActivityIndexByTypeHandler),
+                (r'/api/activity/get_more_acts_by_type', ActivityIndexByTypeHandler),
                 (r'/api/activity/reset', ActivityResetHandler),
+                (r'/activity/(\d+)', ActivityHtmlHandler),
 
             ],
             template_path=os.path.join(os.path.dirname(__file__), 'templates'),
