@@ -24,13 +24,13 @@ class Activity(object):
     @classmethod
     def get_some_acts_by_type(cls, t):
         db = get_db()
-        cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(10)
+        cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(1)
         return list(cursor)
 
     @classmethod
     def get_more_acts_by_type(cls, t, s):
         db = get_db()
-        cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(10).skip(s)
+        cursor = db["Activities"].find({"type": t}).sort("start_date", pymongo.DESCENDING).limit(1).skip(s)
         return list(cursor)
 
     # @classmethod
