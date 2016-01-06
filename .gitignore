@@ -1,5 +1,5 @@
 # Built application files
-*.apk
+#*.apk
 *.ap_
 
 # Files for the Dalvik VM
@@ -80,6 +80,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Mac temp file
+.DS_Store
 
 static/img/*
 !static/img/user/
