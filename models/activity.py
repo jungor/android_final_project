@@ -35,7 +35,7 @@ class Activity(object):
     @classmethod
     def get_recommend_acts(cls):
         db = get_db()
-        cursor = db["Activities"].find({}).sort("start_date", pymongo.ASCENDING).limit(10)
+        cursor = db["Activities"].find({}).sort("start_date", pymongo.ASCENDING).limit(5)
         return list(cursor)
 
     @classmethod
