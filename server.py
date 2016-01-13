@@ -208,6 +208,7 @@ class ActivityHtmlHandler(BaseHandler):
     def get(self, aid, *args, **kwargs):
         a = Activity.get_act_by_id(aid)
         if a:
+            Activity.inc_read_nums_by_id(aid)
             self.render('activity.html', **a)
         else:
             self.write(self.make_result(0, "url invalid", None))

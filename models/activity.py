@@ -64,10 +64,17 @@ class Activity(object):
 
     @classmethod
     def get_act_by_id(cls, aid):
-        print aid
         db = get_db()
         a = db["Activities"].find_one({"id": aid})
         return a
+
+    @classmethod
+    def inc_read_nums_by_id(cls, aid):
+        db = get_db()
+        a = db["Activities"].find_one({"id": aid})
+        if a:
+            n = int(a["read_nums"])
+            db["Activities"].update_one({"id": aid}, {"$set": {"read_nums": str(n+1)}})
 
     # @classmethod
     # def get_recent_acts_by_club(cls, cname, ):
