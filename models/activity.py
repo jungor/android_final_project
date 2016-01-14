@@ -244,7 +244,7 @@ class Activity(object):
                     "organizer": "广播台",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/8.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/8",
-                    "type": "3",
+                    "type": "0",
                     "detail": "假面舞会作为最具浪漫气质的激情活动之一，源于西方的万圣节，颇具西方文化色彩，充满了新奇和绚烂的气氛。这也是我们放开日常身份，与面具背后的陌生朋友共度美好夜晚的机会。",
                 }
         )
@@ -262,7 +262,7 @@ class Activity(object):
                     "organizer": "一起跑",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/9.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/9",
-                    "type": "3",
+                    "type": "1",
                     "detail": "距离为5公里的Color Run不计时，跑者每一公里都将经过一个色彩站，从头到脚都会被抛洒上不同的颜色。在终点舞台区将开始一场更加壮观的色彩派对，届时大家会一起把手中的彩色粉向空中抛洒，每个人都会像调色板一样色彩缤纷。相信我们，这将是你所见过最棒的5公里跑完成后的派对",
                 }
         )
@@ -280,7 +280,7 @@ class Activity(object):
                     "organizer": "电子竞技协会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/10.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/10",
-                    "type": "3",
+                    "type": "2",
                     "detail": "想知道谁是中大第一中单吗？想知道中大第一战队花落谁家吗？无级别限制，无段位门槛，只要五个人凑得起，大家都是出门泉水0级，谁都能再乱战中怒夺胜利。谁是线上单挑王？谁是团战carry大boss？在这里，才是真正的开黑五连坐！",
                 }
         )
@@ -334,7 +334,7 @@ class Activity(object):
                     "organizer": "软件学院团委",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/13.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/13",
-                    "type": "3",
+                    "type": "0",
                     "detail": "第十一届中山大学“37游戏杯”软件创新开发大赛决赛，玩心创造世界，创意改变未来，让我们相约，用我们的双眼见证科技带来璀璨光明。在这个夜晚，十二支决赛队伍将进行最后的展示，谁能最终胜出？你就是见证者！",
                 }
         )
@@ -352,7 +352,7 @@ class Activity(object):
                     "organizer": "软件学院学生会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/14.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/14",
-                    "type": "3",
+                    "type": "1",
                     "detail": "为了弘扬餐饮文化，增强后勤与同学们之间的沟通联系， 在食堂与同学之中架起及时交流的桥梁，加强学生的动手实践能力，激发食堂员工的创新意识，展现校园文化及当代大学生的青春魅力与风采。让你的味蕾享受一次心动之旅吧。",
                 }
         )
@@ -370,7 +370,7 @@ class Activity(object):
                     "organizer": "广播台",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/15.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/15",
-                    "type": "3",
+                    "type": "2",
                     "detail": "最先锋的乐手，最前卫的观众，最震撼的气场，最有范儿的音乐。这个夜晚，一把吉他，一首歌，一次感动，是不眠之夜与琴弦之音的交织，16号晚7点，一起迷失在吉他的世界，寻找属于自己的声音。",
                 }
         )
@@ -406,7 +406,7 @@ class Activity(object):
                     "organizer": "广播台",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/17.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/17",
-                    "type": "3",
+                    "type": "0",
                     "detail": "你觉得听过的歌很多吗？你觉得你是中华歌曲库吗？你能听到前奏秒猜歌曲吗？听歌之王就在这里，不服来战。",
                 }
         )
@@ -424,7 +424,7 @@ class Activity(object):
                     "organizer": "电子竞技协会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/18.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/18",
-                    "type": "3",
+                    "type": "1",
                     "detail": "枪神一出，谁不应声倒地？想比试枪法吗？我没别的意思，只是想说在座的各位都是辣鸡，你若不服，CF校园赛，枪法见高低",
                 }
         )
@@ -442,7 +442,7 @@ class Activity(object):
                     "organizer": "软件学院学生会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/19.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/19",
-                    "type": "3",
+                    "type": "2",
                     "detail": "猫奴狗奴集结号，相比比谁家的爱宠更出色吗？带它们来参加宠物障碍跑吧！",
                 }
         )
@@ -478,7 +478,7 @@ class Activity(object):
                     "organizer": "软件学院学生会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/21.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/21",
-                    "type": "3",
+                    "type": "0",
                     "detail": "见过扯淡的，没见过这么扯蛋的！听说你很会吹牛逼？倒是上台看看谁更会吹啊。",
                 }
         )
@@ -496,7 +496,7 @@ class Activity(object):
                     "organizer": "摄影协会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/22.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/22",
-                    "type": "3",
+                    "type": "1",
                     "detail": "涂涂画画，画画图图，笔墨横飞，色彩纷呈，谁是涂鸦王者？多说无益，你行你来画。",
                 }
         )
@@ -514,7 +514,7 @@ class Activity(object):
                     "organizer": "软件学院学生会",
                     "img_url": SERVER_ROOT_URL + "/static/img/activity/23.jpg",
                     "detail_url": SERVER_ROOT_URL + "/activity/23",
-                    "type": "3",
+                    "type": "2",
                     "detail": "这是我三天的食量啊兄弟，你说你一顿就能吃完？吃完我就叫你大胃王！",
                 }
         )
